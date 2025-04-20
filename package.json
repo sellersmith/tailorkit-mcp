@@ -1,5 +1,5 @@
 {
-  "name": "@modelcontextprotocol/server-tailorkit",
+  "name": "@sellersmith/tailorkit-mcp",
   "version": "0.1.0",
   "description": "MCP server for interacting with TailorKit",
   "license": "MIT",
