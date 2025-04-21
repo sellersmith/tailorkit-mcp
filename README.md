@@ -63,7 +63,6 @@ Add the following to your `claude_desktop_config.json`:
       "args": ["path/to/your/dist/index.js"],
       "env": {
         "HOST": "https://your-api-host.com",
-        "SHOP_DOMAIN": "your-shop.myshopify.com",
         "ACCESS_TOKEN": "your-access-token"
       }
     }
@@ -74,8 +73,13 @@ Add the following to your `claude_desktop_config.json`:
 ### Environment Variables
 
 1. `HOST`: Required. The host URL for your TailorKit API.
-2. `SHOP_DOMAIN`: Required. Your Shopify domain.
-3. `ACCESS_TOKEN`: Required. Your TailorKit API access token for authentication.
+2. `ACCESS_TOKEN`: Required. Your TailorKit API access token for authentication.
+
+### Access Token
+
+Go to `Settings` -> `Preferences` -> `Generate access token`
+
+![TailorKit Access Token](https://img001.prntscr.com/file/img001/iHKoBGqbRuK9OxeiBqnxHA.png)
 
 ## Installation
 
