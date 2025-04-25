@@ -1,6 +1,6 @@
 # TailorKit MCP
 
-TailorKit MCP is a powerful product customization framework for e-commerce that enables merchants to create interactive personalization experiences. Features template management, layer control, and Shopify integration for offering customizable products with minimal development effort.
+[TailorKit MCP](https://apps.shopify.com/tailorkit) is a powerful product customization framework for e-commerce that enables merchants to create interactive personalization experiences. Features template management, layer control, and Shopify integration for offering customizable products with minimal development effort.
 
 ![TailorKit MCP](https://cdn.shopify.com/app-store/listing_images/958e5ec4440b11eb378c3c27a7a4097d/icon/CKPAh-fW_YYDEAE=.png)
 
