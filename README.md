@@ -36,7 +36,7 @@ This MCP (Model Context Protocol) server connects Claude and other AI assistants
    - Required inputs:
      - `shopDomain` (string): The shop domain ending with .myshopify.com
      - `name` (string, default: "New Template"): Name of the template
-     - `dimensions` (object): Width, height, measurement unit, and resolution
+     - `dimension` (object): Width, height, measurement unit, and resolution
    - Optional inputs:
      - `_id` (string, format: uuid): Custom ID for the template
      - `layers` (array): Initial layers configuration

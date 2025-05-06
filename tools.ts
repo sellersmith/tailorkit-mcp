@@ -211,7 +211,7 @@ const createTemplateTool: TailorKitTool = {
         },
       },
     },
-    required: ["shopDomain", "name", "dimensions"],
+    required: ["shopDomain", "name", "dimension"],
   },
 };
 

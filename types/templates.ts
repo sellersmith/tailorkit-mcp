@@ -52,7 +52,7 @@ export interface GetTemplateArgs {
  * Create a new template
  * @param shopDomain - The shop domain
  * @param name - The name of the template
- * @param dimension - The dimensions of the template
+ * @param dimension - The dimension of the template
  * @param layers - The layers of the template
  */
 export interface CreateTemplateArgs {
@@ -65,7 +65,7 @@ export interface CreateTemplateArgs {
    */
   name: string;
   /**
-   * The dimensions of the template
+   * The dimension of the template
    */
   dimension: {
     width: number;
