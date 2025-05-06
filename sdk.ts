@@ -55,7 +55,8 @@ export class TailorKitClient {
     // this.log(`response: ${response}`);
 
     if (!response.ok) {
-      throw new Error(`Failed to get list templates: ${response.statusText}`);
+      const errorData: any = await response.json();
+      throw new Error(`Failed to get list templates: ${response.statusText} ${errorData.error?.message}`);
     }
 
     return response.json();
@@ -76,7 +77,8 @@ export class TailorKitClient {
     );
 
     if (!response.ok) {
-      throw new Error(`Failed to get detail template: ${response.statusText}`);
+      const errorData: any = await response.json();
+      throw new Error(`Failed to get detail template: ${response.statusText} ${errorData.error?.message}`);
     }
 
     return response.json();
@@ -100,7 +102,8 @@ export class TailorKitClient {
     );
 
     if (!response.ok) {
-      throw new Error(`Failed to create template: ${response.statusText}`);
+      const errorData: any = await response.json();
+      throw new Error(`Failed to create template: ${response.statusText} ${errorData.error?.message}`);
     }
 
     return response.json();
@@ -121,9 +124,8 @@ export class TailorKitClient {
     );
 
     if (!response.ok) {
-      throw new Error(
-        `Failed to get list layers of template: ${response.statusText}`
-      );
+      const errorData: any = await response.json();
+      throw new Error(`Failed to get list layers of template: ${response.statusText} ${errorData.error?.message}`);
     }
 
     return response.json();
