@@ -6,7 +6,7 @@ import {
   ListToolsRequestSchema,
 } from "@modelcontextprotocol/sdk/types.js";
 import { TailorKitClient } from "./sdk.js";
-import { TOOLS, TailorKitToolName } from "./tools.js";
+import { TOOLS } from "./src/tools/index.js";
 import { initializeToolHandlers } from "./src/handlers/index.js";
 
 async function main() {
@@ -47,7 +47,7 @@ async function main() {
           throw new Error("No arguments provided");
         }
 
-        const toolName = request.params.name as TailorKitToolName;
+        const toolName = request.params.name as string;
         console.error(`Looking up handler for tool: ${toolName}`);
 
         // Check if the tool exists in the registry
@@ -67,7 +67,14 @@ async function main() {
         console.error(`Handler execution completed for tool: ${toolName}`);
         console.error(`Result: ${JSON.stringify(result)}`);
 
-        return result;
+        return {
+          content: [
+            {
+              type: "text",
+              text: JSON.stringify(result.data || {}),
+            },
+          ],
+        };
       } catch (error) {
         console.error("Error executing tool:", error);
         return {

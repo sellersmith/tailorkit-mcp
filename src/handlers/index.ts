@@ -1,54 +1,16 @@
 import { TailorKitClient } from "../../sdk.js";
-import { TailorKitToolName } from "../../tools.js";
-import { getListTemplatesHandler } from "./getListTemplates.js";
-import { getDetailTemplateHandler } from "./getDetailTemplate.js";
-import { createTemplateHandler } from "./createTemplate.js";
-import { getListLayersOfTemplateHandler } from "./getListLayersOfTemplate.js";
-import { ToolHandlerResponse } from "./types.js";
+import { ToolHandlersRegistry } from "./registry/ToolHandlersRegistry.js";
+import {
+  TemplateHandlerRegistrar,
+  LayerHandlerRegistrar,
+  IntegrationHandlerRegistrar,
+  UserPreferencesHandlerRegistrar
+} from "./registrars/index.js";
+import { ServiceManager } from "../services/ServiceManager.js";
+import { ToolHandler } from "./types.js";
 
-/**
- * Type definition for tool handlers
- */
-export type ToolHandler = (args: unknown) => Promise<ToolHandlerResponse>;
-
-/**
- * Tool handler registry using Factory Pattern
- */
-export class ToolHandlersRegistry {
-  private registry: Map<TailorKitToolName, ToolHandler> = new Map();
-
-  /**
-   * Register a tool handler
-   * @param toolName - The name of the tool
-   * @param handler - The handler function
-   */
-  register(toolName: TailorKitToolName, handler: ToolHandler): void {
-    this.registry.set(toolName, handler);
-  }
-
-  /**
-   * Get a tool handler by name
-   * @param toolName - The name of the tool
-   * @returns The handler function
-   * @throws Error if handler is not found
-   */
-  getHandler(toolName: TailorKitToolName): ToolHandler {
-    const handler = this.registry.get(toolName);
-    if (!handler) {
-      throw new Error(`Handler not found for tool: ${toolName}`);
-    }
-    return handler;
-  }
-
-  /**
-   * Check if a handler exists for a tool
-   * @param toolName - The name of the tool
-   * @returns Whether a handler exists
-   */
-  hasHandler(toolName: string): boolean {
-    return this.registry.has(toolName as TailorKitToolName);
-  }
-}
+export { ToolHandlersRegistry } from "./registry/ToolHandlersRegistry.js";
+export { ToolHandler } from "./types.js";
 
 /**
  * Initialize and register all tool handlers
@@ -57,23 +19,18 @@ export class ToolHandlersRegistry {
  */
 export function initializeToolHandlers(client: TailorKitClient): ToolHandlersRegistry {
   const registry = new ToolHandlersRegistry();
+  const serviceManager = ServiceManager.getInstance(client);
 
-  // Register all handlers
-  registry.register("get_list_templates", (args: unknown) =>
-    getListTemplatesHandler(client, args)
-  );
+  // Register handlers by service type
+  const registrars = [
+    new TemplateHandlerRegistrar(registry, serviceManager),
+    new LayerHandlerRegistrar(registry, serviceManager),
+    new IntegrationHandlerRegistrar(registry, serviceManager),
+    new UserPreferencesHandlerRegistrar(registry, serviceManager),
+  ];
 
-  registry.register("get_detail_template", (args: unknown) =>
-    getDetailTemplateHandler(client, args)
-  );
-
-  registry.register("create_template", (args: unknown) =>
-    createTemplateHandler(client, args)
-  );
-
-  registry.register("get_list_layers_of_template", (args: unknown) =>
-    getListLayersOfTemplateHandler(client, args)
-  );
+  // Register all handlers from each service registrar
+  registrars.forEach(registrar => registrar.registerHandlers());
 
   return registry;
 }

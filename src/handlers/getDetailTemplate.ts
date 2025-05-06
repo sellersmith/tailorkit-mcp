@@ -1,31 +1,31 @@
-import { TailorKitClient } from "../../sdk.js";
 import { GetTemplateArgs } from "../../types/index.js";
 import { ToolHandlerResponse } from "./types.js";
+import { ServiceManager } from "../services/ServiceManager.js";
+import { createHandler } from "./handlerFactory.js";
+
+/**
+ * Validate getDetailTemplate arguments
+ */
+function validateGetDetailTemplateArgs(args: GetTemplateArgs): void {
+  if (!args._id || !args.shopDomain) {
+    throw new Error("Invalid arguments: _id and shopDomain are required");
+  }
+}
+
+/**
+ * Service method for getDetailTemplate
+ */
+async function getDetailTemplateServiceMethod(
+  serviceManager: ServiceManager,
+  args: GetTemplateArgs
+) {
+  return serviceManager.templateService.getTemplateDetails(args);
+}
 
 /**
  * Handler for get_detail_template tool
- * @param client - The TailorKit client instance
- * @param args - The tool arguments
- * @returns The handler result
  */
-export async function getDetailTemplateHandler(
-  client: TailorKitClient,
-  args: unknown
-): Promise<ToolHandlerResponse> {
-  const typedArgs = args as GetTemplateArgs;
-
-  if (!typedArgs._id || !typedArgs.shopDomain) {
-    throw new Error("Invalid arguments: _id and shopDomain are required");
-  }
-
-  const detailTemplate = await client.getDetailTemplate(typedArgs);
-
-  return {
-    content: [
-      {
-        type: "text",
-        text: JSON.stringify(detailTemplate),
-      },
-    ],
-  };
-}
+export const getDetailTemplateHandler = createHandler<GetTemplateArgs, any>(
+  validateGetDetailTemplateArgs,
+  getDetailTemplateServiceMethod
+);

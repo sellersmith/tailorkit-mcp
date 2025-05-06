@@ -3,9 +3,12 @@
  * This ensures consistent response format for MCP
  */
 export interface ToolHandlerResponse {
-  content: Array<{
-    type: string;
-    text: string;
-  }>;
-  [key: string]: unknown;
+  success: boolean;
+  data?: any;
+  error?: string;
 }
+
+/**
+ * Type definition for tool handlers
+ */
+export type ToolHandler = (args: unknown) => Promise<ToolHandlerResponse>;

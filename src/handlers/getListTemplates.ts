@@ -1,31 +1,31 @@
-import { TailorKitClient } from "../../sdk.js";
 import { GetListTemplatesArgs } from "../../types/index.js";
 import { ToolHandlerResponse } from "./types.js";
+import { ServiceManager } from "../services/ServiceManager.js";
+import { createHandler } from "./handlerFactory.js";
+
+/**
+ * Validate getListTemplates arguments
+ */
+function validateGetListTemplatesArgs(args: GetListTemplatesArgs): void {
+  if (!args.shopDomain) {
+    throw new Error("Invalid arguments: shopDomain is required");
+  }
+}
+
+/**
+ * Service method for getListTemplates
+ */
+async function getListTemplatesServiceMethod(
+  serviceManager: ServiceManager,
+  args: GetListTemplatesArgs
+) {
+  return serviceManager.templateService.getTemplates(args);
+}
 
 /**
  * Handler for get_list_templates tool
- * @param client - The TailorKit client instance
- * @param args - The tool arguments
- * @returns The handler result
  */
-export async function getListTemplatesHandler(
-  client: TailorKitClient,
-  args: unknown
-): Promise<ToolHandlerResponse> {
-  const typedArgs = args as GetListTemplatesArgs;
-
-  if (!typedArgs.shopDomain) {
-    throw new Error("Invalid arguments: shopDomain is required");
-  }
-
-  const listTemplates = await client.getListTemplates(typedArgs);
-
-  return {
-    content: [
-      {
-        type: "text",
-        text: JSON.stringify(listTemplates),
-      },
-    ],
-  };
-}
+export const getListTemplatesHandler = createHandler<GetListTemplatesArgs, any>(
+  validateGetListTemplatesArgs,
+  getListTemplatesServiceMethod
+);
