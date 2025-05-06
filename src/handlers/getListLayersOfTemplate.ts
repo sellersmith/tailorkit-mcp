@@ -19,7 +19,7 @@ async function getListLayersOfTemplateServiceMethod(
   serviceManager: ServiceManager,
   args: GetListLayersOfTemplateArgs
 ) {
-  return serviceManager.layerService.getLayers(args);
+  return serviceManager.layerService.getListLayersOfTemplate(args);
 }
 
 /**

@@ -1,5 +1,6 @@
-import { TailorKitClient } from "../../../sdk.js";
+import { TailorKitBaseClient } from "../../core/TailorKitBaseClient.js";
 import { GetListLayersOfTemplateArgs } from "../../../types/index.js";
+import { API_ENDPOINTS } from "../constants.js";
 
 /**
  * Layer data response interface
@@ -13,24 +14,24 @@ export interface LayerResponse<T> {
  * Layer service for handling layer operations
  */
 export class LayerService {
-  private client: TailorKitClient;
+  private client: TailorKitBaseClient;
 
   /**
-   * Create a new Layer Service
-   * @param client - The TailorKit client instance
+   * Create a new LayerService
+   * @param client - The TailorKit base client
    */
-  constructor(client: TailorKitClient) {
+  constructor(client: TailorKitBaseClient) {
     this.client = client;
   }
 
   /**
-   * Get list of layers for a template
-   * @param args - The arguments for fetching layers
-   * @returns Promise with the layers data response
+   * Get list layers of template
+   * @param args - The arguments for the get list layers of template
+   * @returns The list layers of template
    */
-  async getLayers<T>(args: GetListLayersOfTemplateArgs): Promise<LayerResponse<T>> {
+  async getListLayersOfTemplate<T = any>(args: GetListLayersOfTemplateArgs): Promise<LayerResponse<T>> {
     try {
-      const data = await this.client.getListLayersOfTemplate(args) as T;
+      const data = await this.client.post<GetListLayersOfTemplateArgs, T>(API_ENDPOINTS.LAYER.GET_LIST_LAYERS_OF_TEMPLATE, args);
       return { data, error: null };
     } catch (error) {
       return {

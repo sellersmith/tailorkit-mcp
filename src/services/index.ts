@@ -1,14 +1,14 @@
 // Export the service manager
-export * from "./ServiceManager.js";
+export { ServiceManager } from './ServiceManager.js';
 
 // Export template service and types
-export * from "./template/TemplateService.js";
+export { TemplateService } from './template/TemplateService.js';
 
 // Export layer service and types
-export * from "./layer/LayerService.js";
+export { LayerService } from './layer/LayerService.js';
 
 // Export integration service and types
-export * from "./integration/IntegrationService.js";
+export { IntegrationService } from './integration/IntegrationService.js';
 
-// Export shop config service and types
-export * from "./userPreferences/UserPreferencesService.js";
+// Export user preferences service and types
+export { UserPreferencesService } from './userPreferences/UserPreferencesService.js';

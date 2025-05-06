@@ -19,7 +19,7 @@ async function getDetailTemplateServiceMethod(
   serviceManager: ServiceManager,
   args: GetTemplateArgs
 ) {
-  return serviceManager.templateService.getTemplateDetails(args);
+  return serviceManager.templateService.getDetailTemplate(args);
 }
 
 /**

@@ -1,48 +1,48 @@
-import { TailorKitClient } from "../../../sdk.js";
+import { TailorKitBaseClient } from "../../core/TailorKitBaseClient.js";
 
 /**
- * userPreferences data response interface
+ * UserPreferences data response interface
  */
-export interface userPreferencesResponse<T> {
+export interface UserPreferencesResponse<T> {
   data: T | null;
   error: Error | null;
 }
 
 /**
- * userPreferences request params
+ * UserPreferences request params
  */
-export interface GetuserPreferencesArgs {
+export interface GetUserPreferencesArgs {
   shopDomain: string;
 }
 
-export interface UpdateuserPreferencesArgs {
+export interface UpdateUserPreferencesArgs {
   shopDomain: string;
   config: Record<string, any>;
 }
 
 /**
- * userPreferences service for handling shop configuration operations
+ * Service for user preferences operations
  */
 export class UserPreferencesService {
-  private client: TailorKitClient;
+  private client: TailorKitBaseClient;
 
   /**
-   * Create a new userPreferences Service
-   * @param client - The TailorKit client instance
+   * Create a new UserPreferencesService
+   * @param client - The TailorKit base client
    */
-  constructor(client: TailorKitClient) {
+  constructor(client: TailorKitBaseClient) {
     this.client = client;
   }
 
   /**
-   * Get shop configuration
-   * @param args - The arguments for fetching shop config
-   * @returns Promise with the shop config data response
+   * Get user preferences
+   * @param args - The arguments for fetching user preferences
+   * @returns Promise with the user preferences data response
    */
-  async getuserPreferences<T>(args: GetuserPreferencesArgs): Promise<userPreferencesResponse<T>> {
+  async getUserPreferences<T>(args: GetUserPreferencesArgs): Promise<UserPreferencesResponse<T>> {
     try {
       // Implementation will be added when the API is available
-      throw new Error("Get shop config not implemented yet");
+      throw new Error("Get user preferences not implemented yet");
     } catch (error) {
       return {
         data: null,
@@ -52,14 +52,14 @@ export class UserPreferencesService {
   }
 
   /**
-   * Update shop configuration
-   * @param args - The arguments for updating shop config
-   * @returns Promise with the updated shop config response
+   * Update user preferences
+   * @param args - The arguments for updating user preferences
+   * @returns Promise with the updated user preferences response
    */
-  async updateuserPreferences<T>(args: UpdateuserPreferencesArgs): Promise<userPreferencesResponse<T>> {
+  async updateUserPreferences<T>(args: UpdateUserPreferencesArgs): Promise<UserPreferencesResponse<T>> {
     try {
       // Implementation will be added when the API is available
-      throw new Error("Shop config update not implemented yet");
+      throw new Error("User preferences update not implemented yet");
     } catch (error) {
       return {
         data: null,
@@ -67,4 +67,6 @@ export class UserPreferencesService {
       };
     }
   }
+
+  // User preferences specific methods will be added here
 }

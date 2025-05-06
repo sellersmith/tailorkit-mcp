@@ -19,7 +19,7 @@ export { ToolHandler } from "./types.js";
  */
 export function initializeToolHandlers(client: TailorKitClient): ToolHandlersRegistry {
   const registry = new ToolHandlersRegistry();
-  const serviceManager = ServiceManager.getInstance(client);
+  const serviceManager = ServiceManager.getInstance(client.getBaseClient());
 
   // Register handlers by service type
   const registrars = [

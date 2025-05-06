@@ -19,7 +19,7 @@ async function getListTemplatesServiceMethod(
   serviceManager: ServiceManager,
   args: GetListTemplatesArgs
 ) {
-  return serviceManager.templateService.getTemplates(args);
+  return serviceManager.templateService.getListTemplates(args);
 }
 
 /**

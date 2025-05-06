@@ -1,5 +1,6 @@
-import { TailorKitClient } from "../../../sdk.js";
+import { TailorKitBaseClient } from "../../core/TailorKitBaseClient.js";
 import { CreateTemplateArgs, GetListTemplatesArgs, GetTemplateArgs } from "../../../types/index.js";
+import { API_ENDPOINTS } from "../constants.js";
 
 /**
  * Template data response interface
@@ -13,24 +14,24 @@ export interface TemplateResponse<T> {
  * Template service for handling template operations
  */
 export class TemplateService {
-  private client: TailorKitClient;
+  private client: TailorKitBaseClient;
 
   /**
-   * Create a new Template Service
-   * @param client - The TailorKit client instance
+   * Create a new TemplateService
+   * @param client - The TailorKit base client
    */
-  constructor(client: TailorKitClient) {
+  constructor(client: TailorKitBaseClient) {
     this.client = client;
   }
 
   /**
-   * Get list of templates
-   * @param args - The arguments for fetching templates
-   * @returns Promise with the templates data response
+   * Get list templates
+   * @param args - The arguments for the get list templates
+   * @returns The list templates
    */
-  async getTemplates<T>(args: GetListTemplatesArgs): Promise<TemplateResponse<T>> {
+  async getListTemplates<T = any>(args: GetListTemplatesArgs): Promise<TemplateResponse<T>> {
     try {
-      const data = await this.client.getListTemplates(args) as T;
+      const data = await this.client.post<GetListTemplatesArgs, T>(API_ENDPOINTS.TEMPLATE.GET_LIST_TEMPLATES, args);
       return { data, error: null };
     } catch (error) {
       return {
@@ -41,13 +42,13 @@ export class TemplateService {
   }
 
   /**
-   * Get template details
-   * @param args - The arguments for fetching a template
-   * @returns Promise with the template data response
+   * Get detail template
+   * @param args - The arguments for the get detail template
+   * @returns The detail template
    */
-  async getTemplateDetails<T>(args: GetTemplateArgs): Promise<TemplateResponse<T>> {
+  async getDetailTemplate<T = any>(args: GetTemplateArgs): Promise<TemplateResponse<T>> {
     try {
-      const data = await this.client.getDetailTemplate(args) as T;
+      const data = await this.client.post<GetTemplateArgs, T>(API_ENDPOINTS.TEMPLATE.GET_DETAIL_TEMPLATE, args);
       return { data, error: null };
     } catch (error) {
       return {
@@ -58,13 +59,16 @@ export class TemplateService {
   }
 
   /**
-   * Create a new template
-   * @param args - The arguments for creating a template
-   * @returns Promise with the created template response
+   * Create template
+   * @param args - The arguments for the create template
+   * @returns The created template
    */
-  async createTemplate<T>(args: CreateTemplateArgs): Promise<TemplateResponse<T>> {
+  async createTemplate<T = any>(args: CreateTemplateArgs): Promise<TemplateResponse<T>> {
     try {
-      const data = await this.client.createTemplate(args) as T;
+      const data = await this.client.post<any, T>(API_ENDPOINTS.TEMPLATE.CREATE_TEMPLATE, {
+        shopDomain: args.shopDomain,
+        templateData: args,
+      });
       return { data, error: null };
     } catch (error) {
       return {

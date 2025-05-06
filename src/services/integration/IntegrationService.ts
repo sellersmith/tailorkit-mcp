@@ -1,4 +1,4 @@
-import { TailorKitClient } from "../../../sdk.js";
+import { TailorKitBaseClient } from "../../core/TailorKitBaseClient.js";
 
 /**
  * Integration data response interface
@@ -26,13 +26,13 @@ export interface GetIntegrationArgs {
  * Integration service for handling integration operations
  */
 export class IntegrationService {
-  private client: TailorKitClient;
+  private client: TailorKitBaseClient;
 
   /**
-   * Create a new Integration Service
-   * @param client - The TailorKit client instance
+   * Create a new IntegrationService
+   * @param client - The TailorKit base client
    */
-  constructor(client: TailorKitClient) {
+  constructor(client: TailorKitBaseClient) {
     this.client = client;
   }
 

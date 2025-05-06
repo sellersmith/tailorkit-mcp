@@ -1,5 +1,8 @@
-import { TailorKitClient } from "../../sdk.js";
-import { TemplateService, LayerService, IntegrationService, UserPreferencesService } from "./index.js";
+import { TailorKitBaseClient } from "../core/TailorKitBaseClient.js";
+import { TemplateService } from "./template/TemplateService.js";
+import { LayerService } from "./layer/LayerService.js";
+import { IntegrationService } from "./integration/IntegrationService.js";
+import { UserPreferencesService } from "./userPreferences/UserPreferencesService.js";
 
 /**
  * Service Manager class to manage all services
@@ -7,7 +10,7 @@ import { TemplateService, LayerService, IntegrationService, UserPreferencesServi
  */
 export class ServiceManager {
   private static instance: ServiceManager;
-  private client: TailorKitClient;
+  private client: TailorKitBaseClient;
 
   private _templateService: TemplateService;
   private _layerService: LayerService;
@@ -16,9 +19,9 @@ export class ServiceManager {
 
   /**
    * Private constructor to prevent direct construction calls
-   * @param client - The TailorKit client instance
+   * @param client - The TailorKit base client instance
    */
-  private constructor(client: TailorKitClient) {
+  private constructor(client: TailorKitBaseClient) {
     this.client = client;
     this._templateService = new TemplateService(this.client);
     this._layerService = new LayerService(this.client);
@@ -28,10 +31,10 @@ export class ServiceManager {
 
   /**
    * Get the singleton instance of ServiceManager
-   * @param client - The TailorKit client instance
+   * @param client - The TailorKit base client instance
    * @returns The ServiceManager instance
    */
-  public static getInstance(client: TailorKitClient): ServiceManager {
+  public static getInstance(client: TailorKitBaseClient): ServiceManager {
     if (!ServiceManager.instance) {
       ServiceManager.instance = new ServiceManager(client);
     }
@@ -63,8 +66,8 @@ export class ServiceManager {
   }
 
   /**
-   * Get the shop config service
-   * @returns The shop config service
+   * Get the user preferences service
+   * @returns The user preferences service
    */
   public get userPreferencesService(): UserPreferencesService {
     return this._userPreferencesService;
