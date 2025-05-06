@@ -1,6 +1,5 @@
-import { CreateTemplateArgs, GetListLayersOfTemplateArgs } from "./types.js";
-import { GetListTemplatesArgs, GetTemplateArgs } from "./types.js";
 import fetch, { RequestInit, Response } from "node-fetch";
+import { CreateTemplateArgs, GetListLayersOfTemplateArgs, GetListTemplatesArgs, GetTemplateArgs } from "./types/index.js";
 
 export class TailorKitClient {
   private host: string;

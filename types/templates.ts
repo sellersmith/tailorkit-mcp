@@ -2,7 +2,7 @@
  * Get list templates
  * @param shopDomain - The shop domain
  */
-interface GetListTemplatesArgs {
+export interface GetListTemplatesArgs {
   /**
    * The shop domain
    */
@@ -37,7 +37,7 @@ interface GetListTemplatesArgs {
  * @param _id - The id of the template
  * @param shopDomain - The shop domain
  */
-interface GetTemplateArgs {
+export interface GetTemplateArgs {
   /**
    * The id of the template
    */
@@ -48,7 +48,14 @@ interface GetTemplateArgs {
   shopDomain: string;
 }
 
-interface CreateTemplateArgs {
+/**
+ * Create a new template
+ * @param shopDomain - The shop domain
+ * @param name - The name of the template
+ * @param dimension - The dimensions of the template
+ * @param layers - The layers of the template
+ */
+export interface CreateTemplateArgs {
   /**
    * The shop domain
    */
@@ -71,32 +78,3 @@ interface CreateTemplateArgs {
    */
   layers: unknown[];
 }
-
-/**
- * Get list layers of template
- * @param _id - The id of the template
- * @param shopDomain - The shop domain
- * @param limit - The limit of the layers
- */
-interface GetListLayersOfTemplateArgs {
-  /**
-   * The id of the template
-   */
-  _id: string;
-  /**
-   * The shop domain
-   */
-  shopDomain: string;
-  /**
-   * The limit of the layers
-   * If not provided, all layers will be returned
-   */
-  limit?: number;
-}
-
-export {
-  GetListTemplatesArgs,
-  GetTemplateArgs,
-  CreateTemplateArgs,
-  GetListLayersOfTemplateArgs,
-};

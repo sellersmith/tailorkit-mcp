@@ -6,13 +6,8 @@ import {
   ListToolsRequestSchema,
 } from "@modelcontextprotocol/sdk/types.js";
 import { TailorKitClient } from "./sdk.js";
-import { TOOLS } from "./tools.js";
-import {
-  CreateTemplateArgs,
-  GetListLayersOfTemplateArgs,
-  GetListTemplatesArgs,
-  GetTemplateArgs,
-} from "./types.js";
+import { TOOLS, TailorKitToolName } from "./tools.js";
+import { initializeToolHandlers } from "./src/handlers/index.js";
 
 async function main() {
   const host = process.env.HOST;
@@ -38,96 +33,41 @@ async function main() {
 
   const tailorKitClient = new TailorKitClient(host, accessToken);
 
+  // Initialize the tool handlers registry with the TailorKit client
+  const toolHandlersRegistry = initializeToolHandlers(tailorKitClient);
+  console.error("Tool handlers registry initialized.");
+
   server.setRequestHandler(
     CallToolRequestSchema,
     async (request: CallToolRequest) => {
       try {
+        console.error(`Received tool call request for tool: ${request.params.name}`);
+
         if (!request.params.arguments) {
           throw new Error("No arguments provided");
         }
 
-        switch (request.params.name) {
-          case "get_list_templates": {
-            const args = request.params
-              .arguments as unknown as GetListTemplatesArgs;
+        const toolName = request.params.name as TailorKitToolName;
+        console.error(`Looking up handler for tool: ${toolName}`);
 
-            if (!args.shopDomain) {
-              throw new Error("Invalid arguments");
-            }
-
-            const listTemplates = await tailorKitClient.getListTemplates(args);
-
-            return {
-              content: [
-                {
-                  type: "text",
-                  text: JSON.stringify(listTemplates),
-                },
-              ],
-            };
-          }
-
-          case "get_detail_template": {
-            const args = request.params.arguments as unknown as GetTemplateArgs;
-
-            if (!args._id || !args.shopDomain) {
-              throw new Error("Invalid arguments");
-            }
-
-            const detailTemplate = await tailorKitClient.getDetailTemplate(
-              args
-            );
-            return {
-              content: [
-                {
-                  type: "text",
-                  text: JSON.stringify(detailTemplate),
-                },
-              ],
-            };
-          }
-
-          case "create_template": {
-            const args = request.params
-              .arguments as unknown as CreateTemplateArgs;
-
-            if (!args.shopDomain || !args.name || !args.dimension) {
-              throw new Error("Invalid arguments");
-            }
-
-            const createdTemplate = await tailorKitClient.createTemplate(args);
-
-            return {
-              content: [
-                { type: "text", text: JSON.stringify(createdTemplate) },
-              ],
-            };
-          }
-
-          case "get_list_layers_of_template": {
-            const args = request.params
-              .arguments as unknown as GetListLayersOfTemplateArgs;
-
-            if (!args._id || !args.shopDomain) {
-              throw new Error("Invalid arguments");
-            }
-
-            const listLayersOfTemplate =
-              await tailorKitClient.getListLayersOfTemplate(args);
-
-            return {
-              content: [
-                {
-                  type: "text",
-                  text: JSON.stringify(listLayersOfTemplate),
-                },
-              ],
-            };
-          }
-
-          default:
-            throw new Error(`Unknown tool: ${request.params.name}`);
+        // Check if the tool exists in the registry
+        if (!toolHandlersRegistry.hasHandler(toolName)) {
+          console.error(`Handler not found for tool: ${toolName}`);
+          throw new Error(`Unknown tool: ${toolName}`);
         }
+
+        console.error(`Found handler for tool: ${toolName}`);
+
+        // Get the handler for the tool from the registry
+        const handler = toolHandlersRegistry.getHandler(toolName);
+
+        // Execute the handler with arguments
+        console.error(`Executing handler for tool: ${toolName}`);
+        const result = await handler(request.params.arguments);
+        console.error(`Handler execution completed for tool: ${toolName}`);
+        console.error(`Result: ${JSON.stringify(result)}`);
+
+        return result;
       } catch (error) {
         console.error("Error executing tool:", error);
         return {
@@ -146,6 +86,7 @@ async function main() {
 
   server.setRequestHandler(ListToolsRequestSchema, async () => {
     console.error("Received ListToolsRequest");
+    console.error(`Available tools: ${TOOLS.map(tool => tool.name).join(', ')}`);
     return {
       tools: TOOLS,
     };
