@@ -6,6 +6,8 @@ const TAILOR_KIT_TOOL_NAMES = {
   GET_DETAIL_TEMPLATE: "get_detail_template",
   CREATE_TEMPLATE: "create_template",
   GET_LIST_LAYERS_OF_TEMPLATE: "get_list_layers_of_template",
+  GET_LIST_PRODUCTS: "get_list_products",
+  GET_DETAIL_PRODUCT: "get_detail_product",
 };
 
 type TailorKitToolName = typeof TAILOR_KIT_TOOL_NAMES[keyof typeof TAILOR_KIT_TOOL_NAMES];

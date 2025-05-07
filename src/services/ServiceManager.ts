@@ -1,5 +1,5 @@
 import { TailorKitBaseClient } from "../core/TailorKitBaseClient.js";
-import { TemplateService, LayerService, IntegrationService, UserPreferencesService } from "./index.js";
+import { TemplateService, LayerService, IntegrationService, UserPreferencesService, ShopifyService } from "./index.js";
 
 /**
  * Service Manager class to manage all services
@@ -13,7 +13,7 @@ export class ServiceManager {
   private _layerService: LayerService;
   private _integrationService: IntegrationService;
   private _userPreferencesService: UserPreferencesService;
-
+  private _shopifyService: ShopifyService;
   /**
    * Private constructor to prevent direct construction calls
    * @param client - The TailorKit base client instance
@@ -24,6 +24,7 @@ export class ServiceManager {
     this._layerService = new LayerService(this.client);
     this._integrationService = new IntegrationService(this.client);
     this._userPreferencesService = new UserPreferencesService(this.client);
+    this._shopifyService = new ShopifyService(this.client);
   }
 
   /**
@@ -68,5 +69,13 @@ export class ServiceManager {
    */
   public get userPreferencesService(): UserPreferencesService {
     return this._userPreferencesService;
+  }
+
+  /**
+   * Get the Shopify service
+   * @returns The Shopify service
+   */
+  public get shopifyService(): ShopifyService {
+    return this._shopifyService;
   }
 }

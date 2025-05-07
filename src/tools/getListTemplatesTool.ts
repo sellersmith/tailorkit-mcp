@@ -1,7 +1,7 @@
-import { TailorKitTool } from "./constants.js";
+import { TAILOR_KIT_TOOL_NAMES, TailorKitTool } from "./constants.js";
 
 const getListTemplatesTool: TailorKitTool = {
-  name: "get_list_templates",
+  name: TAILOR_KIT_TOOL_NAMES.GET_LIST_TEMPLATES,
   description: "Get list templates with shop domain",
   inputSchema: {
     type: "object",

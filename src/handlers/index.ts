@@ -4,7 +4,8 @@ import {
   TemplateHandlerRegistrar,
   LayerHandlerRegistrar,
   IntegrationHandlerRegistrar,
-  UserPreferencesHandlerRegistrar
+  UserPreferencesHandlerRegistrar,
+  ShopifyHandlerRegistrar
 } from "./registrars/index.js";
 import { ServiceManager } from "../services/index.js";
 
@@ -23,6 +24,7 @@ export function initializeToolHandlers(client: TailorKitClient): ToolHandlersReg
     new LayerHandlerRegistrar(registry, serviceManager),
     new IntegrationHandlerRegistrar(registry, serviceManager),
     new UserPreferencesHandlerRegistrar(registry, serviceManager),
+    new ShopifyHandlerRegistrar(registry, serviceManager),
   ];
 
   // Register all handlers from each service registrar

@@ -1,7 +1,7 @@
-import { TailorKitTool } from "./constants.js";
+import { TAILOR_KIT_TOOL_NAMES, TailorKitTool } from "./constants.js";
 
 const createTemplateTool: TailorKitTool = {
-  name: "create_template",
+  name: TAILOR_KIT_TOOL_NAMES.CREATE_TEMPLATE,
   description: "Create a new template with shop domain",
   inputSchema: {
     type: "object",

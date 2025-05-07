@@ -9,6 +9,12 @@ const API_ENDPOINTS = {
   LAYER: {
     GET_LIST_LAYERS_OF_TEMPLATE: `${API_BASE_URL}/get-list-layers-of-template`,
   },
+  SHOPIFY: {
+    PRODUCT: {
+      GET_LIST_PRODUCTS: `${API_BASE_URL}/get-list-products`,
+      GET_DETAIL_PRODUCT: `${API_BASE_URL}/get-detail-product`,
+    },
+  },
 };
 
 export { API_ENDPOINTS };

@@ -1,7 +1,7 @@
-import { TailorKitTool } from "./constants.js";
+import { TAILOR_KIT_TOOL_NAMES, TailorKitTool } from "./constants.js";
 
 const getListLayersOfTemplateTool: TailorKitTool = {
-  name: "get_list_layers_of_template",
+  name: TAILOR_KIT_TOOL_NAMES.GET_LIST_LAYERS_OF_TEMPLATE,
   description: "Get list layers of template with template id and shop domain",
   inputSchema: {
     type: "object",
