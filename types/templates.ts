@@ -2,7 +2,7 @@
  * Get list templates
  * @param shopDomain - The shop domain
  */
-interface GetListTemplatesArgs {
+export interface GetListTemplatesArgs {
   /**
    * The shop domain
    */
@@ -37,7 +37,7 @@ interface GetListTemplatesArgs {
  * @param _id - The id of the template
  * @param shopDomain - The shop domain
  */
-interface GetTemplateArgs {
+export interface GetTemplateArgs {
   /**
    * The id of the template
    */
@@ -48,7 +48,18 @@ interface GetTemplateArgs {
   shopDomain: string;
 }
 
-interface CreateTemplateArgs {
+/**
+ * Create a new template
+ * @param shopDomain - The shop domain
+ * @param name - The name of the template
+ * @param dimension - The dimension of the template
+ * @param layers - The layers of the template
+ */
+export interface CreateTemplateArgs {
+  /**
+   * The id of the template
+   */
+  _id?: string;
   /**
    * The shop domain
    */
@@ -58,7 +69,7 @@ interface CreateTemplateArgs {
    */
   name: string;
   /**
-   * The dimensions of the template
+   * The dimension of the template
    */
   dimension: {
     width: number;
@@ -69,34 +80,23 @@ interface CreateTemplateArgs {
   /**
    * The layers of the template
    */
-  layers: unknown[];
+  layers?: Array<{
+    _id: string;
+    label: string;
+    type: 'group' | 'text' | 'image' | 'imageless' | 'multi-layout';
+    locked: boolean;
+    visible: boolean;
+    left: number;
+    top: number;
+    rotate: number;
+    width: number;
+    height: number;
+    children?: string[];
+    image?: {
+      src: string;
+      width: number;
+      height: number;
+    };
+    settings?: Record<string, any>;
+  }>;
 }
-
-/**
- * Get list layers of template
- * @param _id - The id of the template
- * @param shopDomain - The shop domain
- * @param limit - The limit of the layers
- */
-interface GetListLayersOfTemplateArgs {
-  /**
-   * The id of the template
-   */
-  _id: string;
-  /**
-   * The shop domain
-   */
-  shopDomain: string;
-  /**
-   * The limit of the layers
-   * If not provided, all layers will be returned
-   */
-  limit?: number;
-}
-
-export {
-  GetListTemplatesArgs,
-  GetTemplateArgs,
-  CreateTemplateArgs,
-  GetListLayersOfTemplateArgs,
-};

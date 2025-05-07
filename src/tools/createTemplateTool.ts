@@ -1,68 +1,7 @@
-import type { Tool } from "@modelcontextprotocol/sdk/types.js";
-
-export type TailorKitToolName =
-  | "get_list_templates"
-  | "get_detail_template"
-  | "create_template"
-  | "get_list_layers_of_template";
-
-type TailorKitTool = Omit<Tool, "name"> & { name: TailorKitToolName };
-
-const getListTemplatesTool: TailorKitTool = {
-  name: "get_list_templates",
-  description: "Get list templates with shop domain",
-  inputSchema: {
-    type: "object",
-    properties: {
-      shopDomain: {
-        type: "string",
-        description: "The shop domain ends with .myshopify.com",
-      },
-      limit: {
-        type: "number",
-        description: "The limit of the templates",
-        default: 5,
-      },
-      page: {
-        type: "number",
-        description: "The page number",
-        default: 1,
-      },
-      sort: {
-        type: "string",
-        description: "The sort order",
-        default: "updatedAt__desc",
-      },
-      filter: {
-        type: "string",
-        description: "The filter",
-        format: "string__has__",
-      },
-    },
-  },
-};
-
-const getDetailTemplateTool: TailorKitTool = {
-  name: "get_detail_template",
-  description: "Get detail template with template id and shop domain",
-  inputSchema: {
-    type: "object",
-    properties: {
-      _id: {
-        type: "string",
-        description: "The id of the template",
-      },
-      shopDomain: {
-        type: "string",
-        description: "The shop domain ends with .myshopify.com",
-      },
-    },
-    required: ["_id", "shopDomain"],
-  },
-};
+import { TAILOR_KIT_TOOL_NAMES, TailorKitTool } from "./constants.js";
 
 const createTemplateTool: TailorKitTool = {
-  name: "create_template",
+  name: TAILOR_KIT_TOOL_NAMES.CREATE_TEMPLATE,
   description: "Create a new template with shop domain",
   inputSchema: {
     type: "object",
@@ -211,34 +150,8 @@ const createTemplateTool: TailorKitTool = {
         },
       },
     },
-    required: ["shopDomain", "name", "dimensions"],
+    required: ["shopDomain", "name", "dimension"],
   },
 };
 
-const getListLayersOfTemplateTool: TailorKitTool = {
-  name: "get_list_layers_of_template",
-  description: "Get list layers of template with template id and shop domain",
-  inputSchema: {
-    type: "object",
-    properties: {
-      _id: {
-        type: "string",
-        description: "The id of the template",
-      },
-      shopDomain: {
-        type: "string",
-        description: "The shop domain ends with .myshopify.com",
-      },
-    },
-    required: ["_id", "shopDomain"],
-  },
-};
-
-const TOOLS = [
-  getListTemplatesTool,
-  getDetailTemplateTool,
-  createTemplateTool,
-  getListLayersOfTemplateTool,
-];
-
-export { TOOLS };
+export default createTemplateTool;
