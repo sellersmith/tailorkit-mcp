@@ -1,4 +1,4 @@
-import { ServiceManager } from "../services/ServiceManager.js";
+import { ServiceManager } from "../services/index.js";
 import { ToolHandlerResponse } from "./types.js";
 
 /**

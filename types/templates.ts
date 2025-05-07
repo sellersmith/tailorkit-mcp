@@ -57,6 +57,10 @@ export interface GetTemplateArgs {
  */
 export interface CreateTemplateArgs {
   /**
+   * The id of the template
+   */
+  _id?: string;
+  /**
    * The shop domain
    */
   shopDomain: string;
@@ -76,5 +80,23 @@ export interface CreateTemplateArgs {
   /**
    * The layers of the template
    */
-  layers: unknown[];
+  layers?: Array<{
+    _id: string;
+    label: string;
+    type: 'group' | 'text' | 'image' | 'imageless' | 'multi-layout';
+    locked: boolean;
+    visible: boolean;
+    left: number;
+    top: number;
+    rotate: number;
+    width: number;
+    height: number;
+    children?: string[];
+    image?: {
+      src: string;
+      width: number;
+      height: number;
+    };
+    settings?: Record<string, any>;
+  }>;
 }

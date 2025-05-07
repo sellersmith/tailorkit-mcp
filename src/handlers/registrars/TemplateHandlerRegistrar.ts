@@ -1,7 +1,9 @@
 import { ServiceHandlerRegistrar } from "./ServiceHandlerRegistrar.js";
-import { getListTemplatesHandler } from "../getListTemplates.js";
-import { getDetailTemplateHandler } from "../getDetailTemplate.js";
-import { createTemplateHandler } from "../createTemplate.js";
+import {
+  getListTemplatesHandler,
+  getDetailTemplateHandler,
+  createTemplateHandler
+} from "../template/index.js";
 import { TAILOR_KIT_TOOL_NAMES } from "../../tools/constants.js";
 
 /**

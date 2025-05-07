@@ -1,5 +1,5 @@
 import { TailorKitBaseClient } from "./src/core/TailorKitBaseClient.js";
-import { ServiceManager } from "./src/services/ServiceManager.js";
+import { ServiceManager } from "./src/services/index.js";
 
 /**
  * TailorKit Client SDK

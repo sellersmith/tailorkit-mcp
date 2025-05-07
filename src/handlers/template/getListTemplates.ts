@@ -1,7 +1,6 @@
-import { GetListTemplatesArgs } from "../../types/index.js";
-import { ToolHandlerResponse } from "./types.js";
-import { ServiceManager } from "../services/ServiceManager.js";
-import { createHandler } from "./handlerFactory.js";
+import { GetListTemplatesArgs } from "../../../types/index.js";
+import { ServiceManager } from "../../services/index.js";
+import { createHandler } from "../handlerFactory.js";
 
 /**
  * Validate getListTemplates arguments

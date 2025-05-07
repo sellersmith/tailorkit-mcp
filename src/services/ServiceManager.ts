@@ -1,8 +1,5 @@
 import { TailorKitBaseClient } from "../core/TailorKitBaseClient.js";
-import { TemplateService } from "./template/TemplateService.js";
-import { LayerService } from "./layer/LayerService.js";
-import { IntegrationService } from "./integration/IntegrationService.js";
-import { UserPreferencesService } from "./userPreferences/UserPreferencesService.js";
+import { TemplateService, LayerService, IntegrationService, UserPreferencesService } from "./index.js";
 
 /**
  * Service Manager class to manage all services

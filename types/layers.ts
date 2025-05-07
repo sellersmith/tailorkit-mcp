@@ -2,7 +2,6 @@
  * Get list layers of template
  * @param _id - The id of the template
  * @param shopDomain - The shop domain
- * @param limit - The limit of the layers, default returns all if not provided
  */
 export interface GetListLayersOfTemplateArgs {
   /**
@@ -13,8 +12,4 @@ export interface GetListLayersOfTemplateArgs {
    * The shop domain
    */
   shopDomain: string;
-  /**
-   * The limit of the layers
-   */
-  limit?: number;
 }

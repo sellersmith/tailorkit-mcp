@@ -6,11 +6,7 @@ import {
   IntegrationHandlerRegistrar,
   UserPreferencesHandlerRegistrar
 } from "./registrars/index.js";
-import { ServiceManager } from "../services/ServiceManager.js";
-import { ToolHandler } from "./types.js";
-
-export { ToolHandlersRegistry } from "./registry/ToolHandlersRegistry.js";
-export { ToolHandler } from "./types.js";
+import { ServiceManager } from "../services/index.js";
 
 /**
  * Initialize and register all tool handlers

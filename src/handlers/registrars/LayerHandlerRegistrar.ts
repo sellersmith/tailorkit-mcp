@@ -1,5 +1,5 @@
 import { ServiceHandlerRegistrar } from "./ServiceHandlerRegistrar.js";
-import { getListLayersOfTemplateHandler } from "../getListLayersOfTemplate.js";
+import { getListLayersOfTemplateHandler } from "../layer/index.js";
 import { TAILOR_KIT_TOOL_NAMES } from "../../tools/constants.js";
 
 /**

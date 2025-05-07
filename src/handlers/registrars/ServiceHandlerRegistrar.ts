@@ -1,5 +1,5 @@
 import { ToolHandlersRegistry } from "../registry/ToolHandlersRegistry.js";
-import { ServiceManager } from "../../services/ServiceManager.js";
+import { ServiceManager } from "../../services/index.js";
 
 /**
  * Base handler registrar for service-specific handlers
