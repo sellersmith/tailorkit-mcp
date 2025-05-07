@@ -1,4 +1,5 @@
 import { TailorKitBaseClient } from "../../core/TailorKitBaseClient.js";
+import { API_ENDPOINTS } from "../constants.js";
 
 /**
  * UserPreferences data response interface
@@ -41,8 +42,8 @@ export class UserPreferencesService {
    */
   async getUserPreferences<T>(args: GetUserPreferencesArgs): Promise<UserPreferencesResponse<T>> {
     try {
-      // Implementation will be added when the API is available
-      throw new Error("Get user preferences not implemented yet");
+      const data = await this.client.post<GetUserPreferencesArgs, T>(API_ENDPOINTS.USER_PREFERENCES.GET_USER_PREFERENCES, args);
+      return { data, error: null };
     } catch (error) {
       return {
         data: null,

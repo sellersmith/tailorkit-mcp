@@ -8,6 +8,7 @@ const TAILOR_KIT_TOOL_NAMES = {
   GET_LIST_LAYERS_OF_TEMPLATE: "get_list_layers_of_template",
   GET_LIST_PRODUCTS: "get_list_products",
   GET_DETAIL_PRODUCT: "get_detail_product",
+  GET_USER_PREFERENCES: "get_user_preferences",
 };
 
 type TailorKitToolName = typeof TAILOR_KIT_TOOL_NAMES[keyof typeof TAILOR_KIT_TOOL_NAMES];

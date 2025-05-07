@@ -15,6 +15,9 @@ const API_ENDPOINTS = {
       GET_DETAIL_PRODUCT: `${API_BASE_URL}/get-detail-product`,
     },
   },
+  USER_PREFERENCES: {
+    GET_USER_PREFERENCES: `${API_BASE_URL}/get-user-preferences`,
+  },
 };
 
 export { API_ENDPOINTS };
