@@ -1,27 +1,6 @@
+import { UserPreferencesResponse, GetUserPreferencesArgs, UpdateUserPreferencesArgs } from "../../../types/index.js";
 import { TailorKitBaseClient } from "../../core/TailorKitBaseClient.js";
 import { API_ENDPOINTS } from "../constants.js";
-
-/**
- * UserPreferences data response interface
- */
-export interface UserPreferencesResponse<T> {
-  data: T | null;
-  error: Error | null;
-}
-
-/**
- * UserPreferences request params
- */
-export interface GetUserPreferencesArgs {
-  shopDomain: string;
-  prompt: string;
-}
-
-export interface UpdateUserPreferencesArgs {
-  shopDomain: string;
-  prompt: string;
-  config: Record<string, any>;
-}
 
 /**
  * Service for user preferences operations

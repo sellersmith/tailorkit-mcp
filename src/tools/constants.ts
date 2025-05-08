@@ -15,4 +15,15 @@ type TailorKitToolName = typeof TAILOR_KIT_TOOL_NAMES[keyof typeof TAILOR_KIT_TO
 
 type TailorKitTool = Omit<Tool, "name"> & { name: TailorKitToolName };
 
-export { TailorKitTool, TAILOR_KIT_TOOL_NAMES };
+const COMMON_TOOL_PROPERTIES = {
+  prompt: {
+    type: "string",
+    description: "The prompt requested by the user",
+  },
+  conversationTitle: {
+    type: "string",
+    description: "The short description of the conversation, it should be a short sentence, max 100 characters",
+  },
+};
+
+export { TailorKitTool, TAILOR_KIT_TOOL_NAMES, COMMON_TOOL_PROPERTIES };

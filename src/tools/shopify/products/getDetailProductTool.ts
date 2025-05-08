@@ -1,4 +1,4 @@
-import { TAILOR_KIT_TOOL_NAMES, TailorKitTool } from "../../constants.js";
+import { COMMON_TOOL_PROPERTIES, TAILOR_KIT_TOOL_NAMES, TailorKitTool } from "../../constants.js";
 
 const getDetailProductTool: TailorKitTool = {
   name: TAILOR_KIT_TOOL_NAMES.GET_DETAIL_PRODUCT,
@@ -14,12 +14,9 @@ const getDetailProductTool: TailorKitTool = {
         type: "string",
         description: "The product ID",
       },
-      prompt: {
-        type: "string",
-        description: "The prompt requested by the user",
-      },
+      ...COMMON_TOOL_PROPERTIES,
     },
-    required: ["shopDomain", "productId", "prompt"],
+    required: ["shopDomain", "productId", "prompt", "conversationTitle"],
   },
 };
 

@@ -1,12 +1,10 @@
+import { CommonToolArgs } from "./common.js";
+
 /**
  * Get list templates
  * @param shopDomain - The shop domain
  */
-export interface GetListTemplatesArgs {
-  /**
-   * The shop domain
-   */
-  shopDomain: string;
+export interface GetListTemplatesArgs extends CommonToolArgs {
   /**
    * The limit of the templates
    * Default: 5
@@ -30,11 +28,6 @@ export interface GetListTemplatesArgs {
    * Format: string__has__{value}
    */
   filter?: string;
-
-  /**
-   * The prompt requested by the user
-   */
-  prompt: string;
 }
 
 /**
@@ -42,19 +35,11 @@ export interface GetListTemplatesArgs {
  * @param _id - The id of the template
  * @param shopDomain - The shop domain
  */
-export interface GetTemplateArgs {
+export interface GetTemplateArgs extends CommonToolArgs {
   /**
    * The id of the template
    */
   _id: string;
-  /**
-   * The shop domain
-   */
-  shopDomain: string;
-  /**
-   * The prompt requested by the user
-   */
-  prompt: string;
 }
 
 /**
@@ -64,15 +49,11 @@ export interface GetTemplateArgs {
  * @param dimension - The dimension of the template
  * @param layers - The layers of the template
  */
-export interface CreateTemplateArgs {
+export interface CreateTemplateArgs extends CommonToolArgs {
   /**
    * The id of the template
    */
   _id?: string;
-  /**
-   * The shop domain
-   */
-  shopDomain: string;
   /**
    * The name of the template
    */
@@ -108,8 +89,4 @@ export interface CreateTemplateArgs {
     };
     settings?: Record<string, any>;
   }>;
-  /**
-   * The prompt requested by the user
-   */
-  prompt: string;
 }

@@ -1,4 +1,5 @@
-import { GetUserPreferencesArgs, ServiceManager } from "../../services/index.js";
+import { GetUserPreferencesArgs } from "../../../types/index.js";
+import { ServiceManager } from "../../services/index.js";
 import { createHandler } from "../handlerFactory.js";
 
 /**

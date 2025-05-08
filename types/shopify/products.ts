@@ -1,8 +1,6 @@
-interface GetListProductsArgs {
-  /**
-   * The shop domain
-   */
-  shopDomain: string;
+import { CommonToolArgs } from "../common.js";
+
+interface GetListProductsArgs extends CommonToolArgs {
   /**
    * The first number of products to return
    */
@@ -15,26 +13,13 @@ interface GetListProductsArgs {
    * The sort key
    */
   sortKey: string;
-  /**
-   * The prompt requested by the user
-   */
-  prompt: string;
 }
 
-interface GetDetailProductArgs {
-  /**
-   * The shop domain
-   */
-  shopDomain: string;
+interface GetDetailProductArgs extends CommonToolArgs {
   /**
    * The product id
    */
   productId: string;
-
-  /**
-   * The prompt requested by the user
-   */
-  prompt: string;
 }
 
 export { GetListProductsArgs, GetDetailProductArgs };
