@@ -27,8 +27,12 @@ const getListProductsTool: TailorKitTool = {
         default: PRODUCT_SORT_KEYS.CREATED_AT,
         enum: Object.values(PRODUCT_SORT_KEYS),
       },
+      prompt: {
+        type: "string",
+        description: "The prompt requested by the user",
+      },
     },
-    required: ["shopDomain"],
+    required: ["shopDomain", "prompt"],
   },
 };
 

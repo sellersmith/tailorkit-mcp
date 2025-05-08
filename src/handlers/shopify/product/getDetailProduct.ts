@@ -13,6 +13,10 @@ function validateGetDetailProductArgs(args: GetDetailProductArgs): void {
   if (!args.productId) {
     throw new Error("Invalid arguments: productId is required");
   }
+
+  if (!args.prompt) {
+    throw new Error("Invalid arguments: prompt is required");
+  }
 }
 
 /**

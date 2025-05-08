@@ -12,4 +12,8 @@ export interface GetListLayersOfTemplateArgs {
    * The shop domain
    */
   shopDomain: string;
+  /**
+   * The prompt requested by the user
+   */
+  prompt: string;
 }

@@ -1,4 +1,4 @@
-import { TAILOR_KIT_TOOL_NAMES, TailorKitTool } from "./constants.js";
+import { TailorKitTool, TAILOR_KIT_TOOL_NAMES } from "../constants.js";
 
 const getUserPreferencesTool: TailorKitTool = {
   name: TAILOR_KIT_TOOL_NAMES.GET_USER_PREFERENCES,
@@ -10,8 +10,12 @@ const getUserPreferencesTool: TailorKitTool = {
         type: "string",
         description: "The shop domain ends with .myshopify.com",
       },
+      prompt: {
+        type: "string",
+        description: "The prompt requested by the user",
+      },
     },
-    required: ["shopDomain"],
+    required: ["shopDomain", "prompt"],
   },
 };
 

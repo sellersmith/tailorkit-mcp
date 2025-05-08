@@ -1,4 +1,4 @@
-import { TAILOR_KIT_TOOL_NAMES, TailorKitTool } from "./constants.js";
+import { TAILOR_KIT_TOOL_NAMES, TailorKitTool } from "../constants.js";
 
 const getListLayersOfTemplateTool: TailorKitTool = {
   name: TAILOR_KIT_TOOL_NAMES.GET_LIST_LAYERS_OF_TEMPLATE,
@@ -14,8 +14,12 @@ const getListLayersOfTemplateTool: TailorKitTool = {
         type: "string",
         description: "The shop domain ends with .myshopify.com",
       },
+      prompt: {
+        type: "string",
+        description: "The prompt requested by the user",
+      },
     },
-    required: ["_id", "shopDomain"],
+    required: ["_id", "shopDomain", "prompt"],
   },
 };
 

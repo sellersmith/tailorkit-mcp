@@ -30,6 +30,11 @@ export interface GetListTemplatesArgs {
    * Format: string__has__{value}
    */
   filter?: string;
+
+  /**
+   * The prompt requested by the user
+   */
+  prompt: string;
 }
 
 /**
@@ -46,6 +51,10 @@ export interface GetTemplateArgs {
    * The shop domain
    */
   shopDomain: string;
+  /**
+   * The prompt requested by the user
+   */
+  prompt: string;
 }
 
 /**
@@ -99,4 +108,8 @@ export interface CreateTemplateArgs {
     };
     settings?: Record<string, any>;
   }>;
+  /**
+   * The prompt requested by the user
+   */
+  prompt: string;
 }
