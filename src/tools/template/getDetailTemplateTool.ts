@@ -1,4 +1,4 @@
-import { TAILOR_KIT_TOOL_NAMES, TailorKitTool } from "../constants.js";
+import { COMMON_TOOL_PROPERTIES, TAILOR_KIT_TOOL_NAMES, TailorKitTool } from "../constants.js";
 
 const getDetailTemplateTool: TailorKitTool = {
   name: TAILOR_KIT_TOOL_NAMES.GET_DETAIL_TEMPLATE,
@@ -14,12 +14,9 @@ const getDetailTemplateTool: TailorKitTool = {
         type: "string",
         description: "The shop domain ends with .myshopify.com",
       },
-      prompt: {
-        type: "string",
-        description: "The prompt requested by the user",
-      },
+      ...COMMON_TOOL_PROPERTIES,
     },
-    required: ["_id", "shopDomain", "prompt"],
+    required: ["_id", "shopDomain", "prompt", "conversationTitle"],
   },
 };
 

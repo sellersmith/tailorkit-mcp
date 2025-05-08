@@ -1,3 +1,4 @@
+import { CommonToolArgs } from "../../../types/common.js";
 import { TailorKitBaseClient } from "../../core/TailorKitBaseClient.js";
 
 /**
@@ -11,14 +12,12 @@ export interface IntegrationResponse<T> {
 /**
  * Integration request params
  */
-export interface GetIntegrationsArgs {
-  shopDomain: string;
+export interface GetIntegrationsArgs extends CommonToolArgs {
   limit?: number;
   page?: number;
 }
 
-export interface GetIntegrationArgs {
-  shopDomain: string;
+export interface GetIntegrationArgs extends CommonToolArgs {
   integrationId: string;
 }
 

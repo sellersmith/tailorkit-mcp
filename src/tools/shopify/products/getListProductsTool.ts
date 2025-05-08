@@ -1,4 +1,4 @@
-import { TAILOR_KIT_TOOL_NAMES, TailorKitTool } from "../../constants.js";
+import { COMMON_TOOL_PROPERTIES, TAILOR_KIT_TOOL_NAMES, TailorKitTool } from "../../constants.js";
 import { PRODUCT_SORT_KEYS } from "./constants.js";
 
 const getListProductsTool: TailorKitTool = {
@@ -27,12 +27,9 @@ const getListProductsTool: TailorKitTool = {
         default: PRODUCT_SORT_KEYS.CREATED_AT,
         enum: Object.values(PRODUCT_SORT_KEYS),
       },
-      prompt: {
-        type: "string",
-        description: "The prompt requested by the user",
-      },
+      ...COMMON_TOOL_PROPERTIES,
     },
-    required: ["shopDomain", "prompt"],
+    required: ["shopDomain", "prompt", "conversationTitle"],
   },
 };
 
