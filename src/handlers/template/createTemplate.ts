@@ -9,6 +9,18 @@ function validateCreateTemplateArgs(args: CreateTemplateArgs): void {
   if (!args.shopDomain) {
     throw new Error("Invalid arguments: shopDomain is required");
   }
+
+  if (!args.prompt) {
+    throw new Error("Invalid arguments: prompt is required");
+  }
+
+  if (!args.name) {
+    throw new Error("Invalid arguments: name is required");
+  }
+
+  if (!args.dimension) {
+    throw new Error("Invalid arguments: dimension is required");
+  }
 }
 
 /**

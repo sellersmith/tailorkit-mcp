@@ -14,10 +14,12 @@ export interface UserPreferencesResponse<T> {
  */
 export interface GetUserPreferencesArgs {
   shopDomain: string;
+  prompt: string;
 }
 
 export interface UpdateUserPreferencesArgs {
   shopDomain: string;
+  prompt: string;
   config: Record<string, any>;
 }
 

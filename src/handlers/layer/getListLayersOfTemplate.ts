@@ -6,11 +6,18 @@ import { createHandler } from "../handlerFactory.js";
  * Validate getListLayersOfTemplate arguments
  */
 function validateGetListLayersOfTemplateArgs(args: GetListLayersOfTemplateArgs): void {
-  if (!args._id || !args.shopDomain) {
-    throw new Error("Invalid arguments: _id and shopDomain are required");
+  if (!args._id) {
+    throw new Error("Invalid arguments: _id is required");
+  }
+
+  if (!args.shopDomain) {
+    throw new Error("Invalid arguments: shopDomain is required");
+  }
+
+  if (!args.prompt) {
+    throw new Error("Invalid arguments: prompt is required");
   }
 }
-
 /**
  * Service method for getListLayersOfTemplate
  */

@@ -1,10 +1,5 @@
-import { ToolHandler } from "../types.js";
-import { ServiceManager } from "../../services/index.js";
+import { GetUserPreferencesArgs, ServiceManager } from "../../services/index.js";
 import { createHandler } from "../handlerFactory.js";
-
-interface GetUserPreferencesArgs {
-  shopDomain: string;
-}
 
 /**
  * Validate getUserPreferences arguments
@@ -12,6 +7,10 @@ interface GetUserPreferencesArgs {
 function validateGetUserPreferencesArgs(args: GetUserPreferencesArgs): void {
   if (!args.shopDomain) {
     throw new Error("Invalid arguments: shopDomain is required");
+  }
+
+  if (!args.prompt) {
+    throw new Error("Invalid arguments: prompt is required");
   }
 }
 

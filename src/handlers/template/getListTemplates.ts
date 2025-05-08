@@ -9,6 +9,10 @@ function validateGetListTemplatesArgs(args: GetListTemplatesArgs): void {
   if (!args.shopDomain) {
     throw new Error("Invalid arguments: shopDomain is required");
   }
+
+  if (!args.prompt) {
+    throw new Error("Invalid arguments: prompt is required");
+  }
 }
 
 /**

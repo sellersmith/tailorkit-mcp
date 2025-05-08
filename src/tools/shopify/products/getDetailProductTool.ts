@@ -14,8 +14,12 @@ const getDetailProductTool: TailorKitTool = {
         type: "string",
         description: "The product ID",
       },
+      prompt: {
+        type: "string",
+        description: "The prompt requested by the user",
+      },
     },
-    required: ["shopDomain", "productId"],
+    required: ["shopDomain", "productId", "prompt"],
   },
 };
 

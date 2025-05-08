@@ -1,4 +1,4 @@
-import { TAILOR_KIT_TOOL_NAMES, TailorKitTool } from "./constants.js";
+import { TAILOR_KIT_TOOL_NAMES, TailorKitTool } from "../constants.js";
 
 const createTemplateTool: TailorKitTool = {
   name: TAILOR_KIT_TOOL_NAMES.CREATE_TEMPLATE,
@@ -149,8 +149,12 @@ const createTemplateTool: TailorKitTool = {
           ],
         },
       },
+      prompt: {
+        type: "string",
+        description: "The prompt requested by the user",
+      },
     },
-    required: ["shopDomain", "name", "dimension"],
+    required: ["shopDomain", "name", "dimension", "prompt"],
   },
 };
 
