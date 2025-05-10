@@ -1,5 +1,6 @@
 import { GetListLayersOfTemplateArgs } from "../../../types/index.js";
 import { ServiceManager } from "../../services/index.js";
+import { validateCommonToolArgs } from "../common.js";
 import { createHandler } from "../handlerFactory.js";
 
 /**
@@ -10,13 +11,7 @@ function validateGetListLayersOfTemplateArgs(args: GetListLayersOfTemplateArgs):
     throw new Error("Invalid arguments: _id is required");
   }
 
-  if (!args.shopDomain) {
-    throw new Error("Invalid arguments: shopDomain is required");
-  }
-
-  if (!args.prompt) {
-    throw new Error("Invalid arguments: prompt is required");
-  }
+  validateCommonToolArgs(args);
 }
 /**
  * Service method for getListLayersOfTemplate

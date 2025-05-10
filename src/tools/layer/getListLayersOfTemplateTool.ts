@@ -1,4 +1,4 @@
-import { COMMON_TOOL_PROPERTIES, TAILOR_KIT_TOOL_NAMES, TailorKitTool } from "../constants.js";
+import { COMMON_TOOL_PROPERTIES, TAILOR_KIT_TOOL_NAMES, TailorKitTool, UUID_PATTERN } from "../constants.js";
 
 const getListLayersOfTemplateTool: TailorKitTool = {
   name: TAILOR_KIT_TOOL_NAMES.GET_LIST_LAYERS_OF_TEMPLATE,
@@ -16,7 +16,7 @@ const getListLayersOfTemplateTool: TailorKitTool = {
       },
       ...COMMON_TOOL_PROPERTIES,
     },
-    required: ["_id", "shopDomain", "prompt", "conversationTitle"],
+    required: ["_id", "shopDomain", "prompt", "conversationId", "conversationTitle"],
   },
 };
 

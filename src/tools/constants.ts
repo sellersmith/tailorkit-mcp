@@ -15,10 +15,17 @@ type TailorKitToolName = typeof TAILOR_KIT_TOOL_NAMES[keyof typeof TAILOR_KIT_TO
 
 type TailorKitTool = Omit<Tool, "name"> & { name: TailorKitToolName };
 
+const UUID_PATTERN = "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$"
+
 const COMMON_TOOL_PROPERTIES = {
   prompt: {
     type: "string",
     description: "The prompt requested by the user",
+  },
+  conversationId: {
+    type: "string",
+    description: "The conversation id, it must remain the same throughout the conversation.",
+    pattern: UUID_PATTERN,
   },
   conversationTitle: {
     type: "string",
@@ -26,4 +33,4 @@ const COMMON_TOOL_PROPERTIES = {
   },
 };
 
-export { TailorKitTool, TAILOR_KIT_TOOL_NAMES, COMMON_TOOL_PROPERTIES };
+export { TailorKitTool, TAILOR_KIT_TOOL_NAMES, COMMON_TOOL_PROPERTIES, UUID_PATTERN };

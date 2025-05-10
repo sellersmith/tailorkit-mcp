@@ -8,6 +8,10 @@ interface CommonToolArgs {
    */
   prompt: string;
   /**
+   * The conversation id, it must remain the same throughout the conversation.
+   */
+  conversationId: string;
+  /**
    * The short description of the conversation, it should be a short sentence, max 100 characters
    */
   conversationTitle: string;

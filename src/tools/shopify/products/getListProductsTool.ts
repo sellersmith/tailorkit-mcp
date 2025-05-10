@@ -29,7 +29,7 @@ const getListProductsTool: TailorKitTool = {
       },
       ...COMMON_TOOL_PROPERTIES,
     },
-    required: ["shopDomain", "prompt", "conversationTitle"],
+    required: ["shopDomain", "prompt", "conversationId", "conversationTitle"],
   },
 };
 
