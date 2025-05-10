@@ -1,4 +1,4 @@
-import { COMMON_TOOL_PROPERTIES, TAILOR_KIT_TOOL_NAMES, TailorKitTool } from "../constants.js";
+import { COMMON_TOOL_PROPERTIES, TAILOR_KIT_TOOL_NAMES, TailorKitTool, UUID_PATTERN } from "../constants.js";
 
 const createTemplateTool: TailorKitTool = {
   name: TAILOR_KIT_TOOL_NAMES.CREATE_TEMPLATE,
@@ -9,7 +9,7 @@ const createTemplateTool: TailorKitTool = {
       _id: {
         type: "string",
         description: "The id of the template",
-        format: "uuid",
+        pattern: UUID_PATTERN,
       },
       shopDomain: {
         type: "string",
@@ -56,7 +56,7 @@ const createTemplateTool: TailorKitTool = {
             _id: {
               type: "string",
               description: "The id of the layer",
-              format: "uuid",
+              pattern: UUID_PATTERN,
             },
             label: {
               type: "string",
@@ -151,7 +151,7 @@ const createTemplateTool: TailorKitTool = {
       },
       ...COMMON_TOOL_PROPERTIES,
     },
-    required: ["shopDomain", "name", "dimension", "prompt", "conversationTitle"],
+    required: ["_id","shopDomain", "name", "dimension", "prompt", "conversationId", "conversationTitle"],
   },
 };
 

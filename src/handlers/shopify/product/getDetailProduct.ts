@@ -1,22 +1,17 @@
 import { GetDetailProductArgs } from "../../../../types/index.js";
 import { ServiceManager } from "../../../services/index.js";
 import { createHandler } from "../../handlerFactory.js";
+import { validateCommonToolArgs } from "../../common.js";
 
 /**
  * Validate getDetailProduct arguments
  */
 function validateGetDetailProductArgs(args: GetDetailProductArgs): void {
-  if (!args.shopDomain) {
-    throw new Error("Invalid arguments: shopDomain is required");
-  }
-
   if (!args.productId) {
     throw new Error("Invalid arguments: productId is required");
   }
 
-  if (!args.prompt) {
-    throw new Error("Invalid arguments: prompt is required");
-  }
+  validateCommonToolArgs(args);
 }
 
 /**

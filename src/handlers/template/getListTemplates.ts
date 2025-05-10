@@ -1,18 +1,13 @@
 import { GetListTemplatesArgs } from "../../../types/index.js";
 import { ServiceManager } from "../../services/index.js";
 import { createHandler } from "../handlerFactory.js";
+import { validateCommonToolArgs } from "../common.js";
 
 /**
  * Validate getListTemplates arguments
  */
 function validateGetListTemplatesArgs(args: GetListTemplatesArgs): void {
-  if (!args.shopDomain) {
-    throw new Error("Invalid arguments: shopDomain is required");
-  }
-
-  if (!args.prompt) {
-    throw new Error("Invalid arguments: prompt is required");
-  }
+  validateCommonToolArgs(args);
 }
 
 /**

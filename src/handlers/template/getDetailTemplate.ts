@@ -1,6 +1,7 @@
 import { GetTemplateArgs } from "../../../types/index.js";
 import { ServiceManager } from "../../services/index.js";
 import { createHandler } from "../handlerFactory.js";
+import { validateCommonToolArgs } from "../common.js";
 
 /**
  * Validate getDetailTemplate arguments
@@ -10,13 +11,7 @@ function validateGetDetailTemplateArgs(args: GetTemplateArgs): void {
     throw new Error("Invalid arguments: _id is required");
   }
 
-  if (!args.shopDomain) {
-    throw new Error("Invalid arguments: shopDomain is required");
-  }
-
-  if (!args.prompt) {
-    throw new Error("Invalid arguments: prompt is required");
-  }
+  validateCommonToolArgs(args);
 }
 
 /**

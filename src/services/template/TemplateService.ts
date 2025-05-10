@@ -64,10 +64,14 @@ export class TemplateService {
    * @returns The created template
    */
   async createTemplate<T = any>(args: CreateTemplateArgs): Promise<TemplateResponse<T>> {
+    const { prompt, conversationId, conversationTitle, ...rest } = args;
     try {
       const data = await this.client.post<any, T>(API_ENDPOINTS.TEMPLATE.CREATE_TEMPLATE, {
         shopDomain: args.shopDomain,
-        templateData: args,
+        templateData: rest,
+        prompt,
+        conversationId,
+        conversationTitle,
       });
       return { data, error: null };
     } catch (error) {

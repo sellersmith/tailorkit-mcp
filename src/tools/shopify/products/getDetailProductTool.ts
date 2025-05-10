@@ -16,7 +16,7 @@ const getDetailProductTool: TailorKitTool = {
       },
       ...COMMON_TOOL_PROPERTIES,
     },
-    required: ["shopDomain", "productId", "prompt", "conversationTitle"],
+    required: ["shopDomain", "productId", "prompt", "conversationId", "conversationTitle"],
   },
 };
 

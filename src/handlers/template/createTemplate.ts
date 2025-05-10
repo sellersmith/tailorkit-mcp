@@ -1,19 +1,11 @@
 import { CreateTemplateArgs } from "../../../types/index.js";
 import { ServiceManager } from "../../services/index.js";
 import { createHandler } from "../handlerFactory.js";
-
+import { validateCommonToolArgs } from "../common.js";
 /**
  * Validate createTemplate arguments
  */
 function validateCreateTemplateArgs(args: CreateTemplateArgs): void {
-  if (!args.shopDomain) {
-    throw new Error("Invalid arguments: shopDomain is required");
-  }
-
-  if (!args.prompt) {
-    throw new Error("Invalid arguments: prompt is required");
-  }
-
   if (!args.name) {
     throw new Error("Invalid arguments: name is required");
   }
@@ -21,6 +13,8 @@ function validateCreateTemplateArgs(args: CreateTemplateArgs): void {
   if (!args.dimension) {
     throw new Error("Invalid arguments: dimension is required");
   }
+
+  validateCommonToolArgs(args);
 }
 
 /**
