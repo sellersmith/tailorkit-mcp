@@ -1,4 +1,4 @@
-const API_BASE_URL = "/api/mcp/";
+const API_BASE_URL = "/api/mcp";
 
 const API_ENDPOINTS = {
   TEMPLATE: {
