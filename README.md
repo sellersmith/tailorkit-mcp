@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/sellersmith-tailorkit-mcp-badge.png)](https://mseep.ai/app/sellersmith-tailorkit-mcp)
+
 # TailorKit MCP
 
 [TailorKit MCP](https://apps.shopify.com/tailorkit) is a powerful product customization framework for e-commerce that enables merchants to create interactive personalization experiences. Features template management, layer control, and Shopify integration for offering customizable products with minimal development effort.
